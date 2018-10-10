@@ -291,8 +291,8 @@ public class CineTecUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_BuscarMouseClicked
 
     private void btn_AñadirPelículaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AñadirPelículaMouseClicked
-        
         Conexion.CineTecMain.addFilmView();
+        Conexion.CineTecMain.setProductoras();
     }//GEN-LAST:event_btn_AñadirPelículaMouseClicked
 
     private void btn_AñadirProductoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AñadirProductoraMouseClicked

@@ -205,21 +205,12 @@ public class CineTecMain {
     }
     
     public static void addFilm(){
-        /*String[] actores = {"Evan Rachel", "Alan Cumming"};
-        List<String> listaActores = Arrays.asList(actores); 
-        Document document = new Document("nombre", "Magia extraña")
-                .append("genero", "Animada").append("Director", "Gary Rydstrom")
-                .append("franquicia", "Magia extraña").append("pais", "Estados Unidos")
-                .append("año", "2015").append("duracion", 99).append("productora", "Lucasfilm")
-                .append("actores", listaActores);
-
-        db.getCollection("peliculas").insertOne(document);*/
         String[] actores=getActores(GUI.AddFilm.jTextField9.getText());
         List<String> listaActores = Arrays.asList(actores); 
         Document document = new Document("nombre", GUI.AddFilm.jTextField1.getText())
                 .append("genero", GUI.AddFilm.jTextField2.getText()).append("Director", GUI.AddFilm.jTextField3.getText())
                 .append("franquicia", GUI.AddFilm.jTextField4.getText()).append("pais", GUI.AddFilm.jTextField5.getText())
-                .append("año", GUI.AddFilm.jTextField6.getText()).append("duracion", Float.valueOf(GUI.AddFilm.jTextField7.getText())).append("productora", GUI.AddFilm.jTextField8.getText())
+                .append("año", GUI.AddFilm.jTextField6.getText()).append("duracion", Float.valueOf(GUI.AddFilm.jTextField7.getText())).append("productora", GUI.AddFilm.cb_Productora.getSelectedItem().toString())
                 .append("actores", listaActores);
 
         db.getCollection("peliculas").insertOne(document);
@@ -247,5 +238,20 @@ public class CineTecMain {
     public static String[] getActores(String actores){
         String[] listaActores=actores.split(",");
         return listaActores;
+    }
+    
+    //Método para cargar las productoras desde la base de datos
+    public static void setProductoras(){
+        BasicDBObject fieldObject = new BasicDBObject();
+        fieldObject.put("nombre", 1);
+        FindIterable<Document> iterable = db.getCollection("productoras").find().projection(fieldObject);
+        iterable.forEach(new Block<Document>() {
+            @Override
+            public void apply(final Document document) {
+                GUI.AddFilm.cb_Productora.addItem(document.get("nombre").toString());
+                //GUI.AddFilm.cb_Productora.addItem(new ComboItem("Visible String 1", "Value 1"));
+                //System.out.println(document.get("nombre").toString());
+            }
+        });
     }
 }
