@@ -53,9 +53,14 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btn_Buscar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btn_AñadirProductora" max="32767" attributes="0"/>
+                  <Component id="btn_AñadirPelícula" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
+          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -67,7 +72,10 @@
                       <Component id="lbl_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txt_buscador" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btn_Buscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="btn_Buscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_AñadirPelícula" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -82,9 +90,10 @@
                       <Component id="chk_Productora" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="chk_InfoProductora" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="btn_AñadirProductora" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="447" max="32767" attributes="0"/>
+              <Component id="jScrollPane2" pref="444" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -272,6 +281,24 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_BuscarMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_A&#xf1;adirPel&#xed;cula">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A&#xf1;adir Pel&#xed;cula"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_A&#xf1;adirPel&#xed;culaMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_A&#xf1;adirProductora">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A&#xf1;adir Productora"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="actionCommand" type="java.lang.String" value="A&#xf1;adir Productora"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_A&#xf1;adirProductoraMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

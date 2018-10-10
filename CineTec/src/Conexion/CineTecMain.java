@@ -3,6 +3,8 @@
  * @author Steven
  */
 package Conexion;
+import GUI.AddFilm;
+import GUI.AddProduc;
 import GUI.CineTecUI;
 import static GUI.CineTecUI.jTable1;
 import com.mongodb.BasicDBObject;
@@ -27,9 +29,11 @@ import static com.mongodb.client.model.Filters.lte;
 import static com.mongodb.client.model.Filters.or;
 import static com.mongodb.client.model.Filters.regex;
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.Popup;
 import javax.swing.table.DefaultTableModel;
 import org.bson.BsonDocument;
@@ -42,7 +46,7 @@ public class CineTecMain {
     
     public static void main(String[] args){
         interfaz.setVisible(true);
-        //infoPeliculasPorProductora("Lucasfilm");
+        interfaz.setTitle("CineTec");
     }
     
     //Método para buscar películas por nombre
@@ -163,7 +167,6 @@ public class CineTecMain {
             public void apply(final Document document) {
                 Fila[0]=document.get("nombre").toString();
                 Fila[6]=document.get("duracion").toString();
-                //addTableRow(Fila);
                 txt_Area.setText(txt_Area.getText()+"Película con menor duración: "+document.get("nombre").toString()+" ("+document.get("duracion").toString()+" minutos)"+"\n");
             }
         });
@@ -174,7 +177,6 @@ public class CineTecMain {
             public void apply(final Document document) {
                 Fila[0]=document.get("nombre").toString();
                 Fila[6]=document.get("duracion").toString();
-                //addTableRow(Fila);
                 txt_Area.setText(txt_Area.getText()+"Película con mayor duración: "+document.get("nombre").toString()+" ("+document.get("duracion").toString()+" minutos)"+"\n");
             }
         });
@@ -187,7 +189,6 @@ public class CineTecMain {
             public void apply(final Document document) {
                 if (document.get("_id").toString().equals("Document{{_id="+productora+"}}")) {
                     Fila[2]= document.get("avgDuration").toString();
-                    //addTableRow(Fila);
                     txt_Area.setText(txt_Area.getText()+"Duración promedio de película: "+document.get("avgDuration").toString()+" minutos"+"\n");
                     
                 }
@@ -197,10 +198,54 @@ public class CineTecMain {
         frame.add(txt_Area);
     }
     
+    //Función para añadir una película
+    public static void addFilmView(){
+        AddFilm addPelicula = new AddFilm();
+        addPelicula.setVisible(true);
+    }
+    
+    public static void addFilm(){
+        /*String[] actores = {"Evan Rachel", "Alan Cumming"};
+        List<String> listaActores = Arrays.asList(actores); 
+        Document document = new Document("nombre", "Magia extraña")
+                .append("genero", "Animada").append("Director", "Gary Rydstrom")
+                .append("franquicia", "Magia extraña").append("pais", "Estados Unidos")
+                .append("año", "2015").append("duracion", 99).append("productora", "Lucasfilm")
+                .append("actores", listaActores);
+
+        db.getCollection("peliculas").insertOne(document);*/
+        String[] actores=getActores(GUI.AddFilm.jTextField9.getText());
+        List<String> listaActores = Arrays.asList(actores); 
+        Document document = new Document("nombre", GUI.AddFilm.jTextField1.getText())
+                .append("genero", GUI.AddFilm.jTextField2.getText()).append("Director", GUI.AddFilm.jTextField3.getText())
+                .append("franquicia", GUI.AddFilm.jTextField4.getText()).append("pais", GUI.AddFilm.jTextField5.getText())
+                .append("año", GUI.AddFilm.jTextField6.getText()).append("duracion", Float.valueOf(GUI.AddFilm.jTextField7.getText())).append("productora", GUI.AddFilm.jTextField8.getText())
+                .append("actores", listaActores);
+
+        db.getCollection("peliculas").insertOne(document);
+    }
+    
+    public static void addProducView(){
+        AddProduc addProductora = new AddProduc();
+        addProductora.setVisible(true);
+    }
+    public static void addProduc(){
+        Document document = new Document("nombre", GUI.AddProduc.jTextField1.getText())
+                .append("año", GUI.AddProduc.jTextField2.getText()).append("sitio", GUI.AddProduc.jTextField3.getText());
+
+        db.getCollection("productoras").insertOne(document);
+    }
+    
+    
     //Función para añadir una fila a la tabla
     public static void addTableRow(String[] Fila){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.addRow(new Object[]{Fila[0], Fila[1], Fila[2], Fila[3], Fila[4], 
         Fila[5], Fila[6], Fila[7], Fila[8]});
+    }
+    
+    public static String[] getActores(String actores){
+        String[] listaActores=actores.split(",");
+        return listaActores;
     }
 }

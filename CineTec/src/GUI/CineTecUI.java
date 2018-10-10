@@ -50,6 +50,8 @@ public class CineTecUI extends javax.swing.JFrame {
         chk_InfoProductora = new javax.swing.JRadioButton();
         chk_Años = new javax.swing.JRadioButton();
         btn_Buscar = new javax.swing.JButton();
+        btn_AñadirPelícula = new javax.swing.JButton();
+        btn_AñadirProductora = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1920, 1080));
@@ -126,6 +128,22 @@ public class CineTecUI extends javax.swing.JFrame {
             }
         });
 
+        btn_AñadirPelícula.setText("Añadir Película");
+        btn_AñadirPelícula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_AñadirPelículaMouseClicked(evt);
+            }
+        });
+
+        btn_AñadirProductora.setText("Añadir Productora");
+        btn_AñadirProductora.setToolTipText("");
+        btn_AñadirProductora.setActionCommand("Añadir Productora");
+        btn_AñadirProductora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_AñadirProductoraMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,8 +170,12 @@ public class CineTecUI extends javax.swing.JFrame {
                     .addComponent(txt_buscador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Buscar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_AñadirProductora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_AñadirPelícula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +185,9 @@ public class CineTecUI extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_buscar)
                         .addComponent(txt_buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_Buscar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_Buscar)
+                        .addComponent(btn_AñadirPelícula)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -174,9 +198,10 @@ public class CineTecUI extends javax.swing.JFrame {
                         .addComponent(chk_Nombre)
                         .addComponent(chk_Franquicia)
                         .addComponent(chk_Productora)
-                        .addComponent(chk_InfoProductora)))
+                        .addComponent(chk_InfoProductora))
+                    .addComponent(btn_AñadirProductora))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
         );
 
         pack();
@@ -265,6 +290,15 @@ public class CineTecUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_BuscarMouseClicked
 
+    private void btn_AñadirPelículaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AñadirPelículaMouseClicked
+        
+        Conexion.CineTecMain.addFilmView();
+    }//GEN-LAST:event_btn_AñadirPelículaMouseClicked
+
+    private void btn_AñadirProductoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AñadirProductoraMouseClicked
+        Conexion.CineTecMain.addProducView();
+    }//GEN-LAST:event_btn_AñadirProductoraMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -307,6 +341,8 @@ public class CineTecUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_AñadirPelícula;
+    private javax.swing.JButton btn_AñadirProductora;
     private javax.swing.JButton btn_Buscar;
     public static javax.swing.JRadioButton chk_Años;
     public static javax.swing.JRadioButton chk_Franquicia;
