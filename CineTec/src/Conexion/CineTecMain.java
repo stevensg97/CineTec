@@ -141,7 +141,7 @@ public class CineTecMain {
         JTextArea txt_Area = new JTextArea();
         txt_Area.setEditable(false);
         txt_Area.setFont(txt_Area.getFont().deriveFont(20f));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(900, 500);
         frame.setVisible(true);
         frame.setResizable(false);

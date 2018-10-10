@@ -51,7 +51,9 @@
                   </Group>
                   <Component id="txt_buscador" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="88" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btn_Buscar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
       </Group>
@@ -60,9 +62,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbl_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txt_buscador" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbl_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_buscador" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btn_Buscar" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -260,6 +265,14 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_Buscar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Buscar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_BuscarMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -49,6 +49,7 @@ public class CineTecUI extends javax.swing.JFrame {
         chk_Productora = new javax.swing.JRadioButton();
         chk_InfoProductora = new javax.swing.JRadioButton();
         chk_Años = new javax.swing.JRadioButton();
+        btn_Buscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1920, 1080));
@@ -118,6 +119,13 @@ public class CineTecUI extends javax.swing.JFrame {
             }
         });
 
+        btn_Buscar.setText("Buscar");
+        btn_Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_BuscarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,16 +150,20 @@ public class CineTecUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_Año2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txt_buscador))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_Buscar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_buscar)
-                    .addComponent(txt_buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_buscar)
+                        .addComponent(txt_buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_Buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -239,6 +251,20 @@ public class CineTecUI extends javax.swing.JFrame {
         txt_Año2.setEnabled(true);
     }//GEN-LAST:event_chk_AñosMouseClicked
 
+    private void btn_BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_BuscarMouseClicked
+        if (chk_Nombre.isSelected()) {
+            Conexion.CineTecMain.peliculaPorTitulo(txt_buscador.getText());
+        } else if (chk_Franquicia.isSelected()) {
+            Conexion.CineTecMain.peliculaPorFranquicia(txt_buscador.getText());
+        } else if (chk_Productora.isSelected()) {
+            Conexion.CineTecMain.peliculasPorProductora(txt_buscador.getText());
+        } else if (chk_InfoProductora.isSelected()) {
+            Conexion.CineTecMain.infoPeliculasPorProductora(txt_buscador.getText());
+        } else if (chk_Años.isSelected()) {
+            Conexion.CineTecMain.peliculasPorAños(txt_Año1.getText(), txt_Año2.getText());
+        }
+    }//GEN-LAST:event_btn_BuscarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -281,6 +307,7 @@ public class CineTecUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Buscar;
     public static javax.swing.JRadioButton chk_Años;
     public static javax.swing.JRadioButton chk_Franquicia;
     public static javax.swing.JRadioButton chk_InfoProductora;
